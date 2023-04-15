@@ -1,6 +1,16 @@
 import UIKit
 
+import FirebaseAnalytics
+
 class SecondViewController: UIViewController {
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [AnalyticsParameterScreenName: "DarkMode",
+                                                                 AnalyticsParameterScreenClass: "SecondViewController",
+                                                                  "ep_first": "APP",
+                                                                  "ep_second": "iOS"])
+    }
     
     // MARK: 디스플레이 라벨
     @IBOutlet weak var mainDisplay: UILabel!
@@ -21,7 +31,7 @@ class SecondViewController: UIViewController {
                 let displayTxt = mainDisplay.text!
                 mainDisplay.text! = displayTxt + digit
             } else {
-                if digit == "000" || digit == "00" {
+                if digit == "0" || digit == "00" || digit == "000" {
                     mainDisplay.text! = "1" + digit
                 } else {
                     mainDisplay.text! = digit
@@ -35,18 +45,27 @@ class SecondViewController: UIViewController {
     // MARK: 초기화 버튼
     // 디스플레이에 있는 문자 및 사용자 입력 프로퍼티 초기화
     @IBAction func clear(_ sender: Any) {
-        mainDisplay.text! = "0"
-        mainDisplay.text! = "0"
+        mainDisplay.text! = ""
         arr = []
         num = 0
         userInput = false
+        Analytics.logEvent("clear", parameters: ["category": "click",
+                                                 "action": "clear"])
     }
     
     
     // MARK: 글자 지우기 버튼
     // dropLast 메소드를 활용해 가장 끝에 있는 문자를 지운다.
     @IBAction func back(_ sender: Any) {
-        mainDisplay.text! = String(mainDisplay.text!.dropLast(1))
+        if mainDisplay.text! != "" {
+            mainDisplay.text! = String(mainDisplay.text!.dropLast(1))
+        } else {
+            let alert = UIAlertController(title: "Stop", message: "숫자를 입력해 주세요.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Okay", style: .destructive))
+            present(alert, animated: true)
+        }
+        Analytics.logEvent("back", parameters: ["category": "click",
+                                                "action": "back"])
     }
     
     
@@ -80,17 +99,25 @@ class SecondViewController: UIViewController {
     // array에 연산자가 없을 경우 '+' 연산자를 추가한다.
     // array에 연산자가 있을 경우 연산을 실행하고, '+' 연산자를 추가한다.
     @IBAction func plus(_ sender: Any) {
-        if userInput {
-            if arr.isEmpty {
-                num = Int(mainDisplay.text!)!
-                arr.append("+")
-            } else {
-                let value = arr.last
-                calculate(operation: value!)
-                arr.append("+")
+        if mainDisplay.text! != "" {
+            if userInput {
+                if arr.isEmpty {
+                    num = Int(mainDisplay.text!)!
+                    arr.append("+")
+                } else {
+                    let value = arr.last
+                    calculate(operation: value!)
+                    arr.append("+")
+                }
+                userInput = false
             }
-            userInput = false
+        } else {
+            let alert = UIAlertController(title: "Stop", message: "숫자를 입력해 주세요.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Okay", style: .destructive))
+            present(alert, animated: true)
         }
+        Analytics.logEvent("plus", parameters: ["category": "click",
+                                                "action": "plus"])
     }
     
     
@@ -98,17 +125,25 @@ class SecondViewController: UIViewController {
     // array에 연산자가 없을 경우 '-' 연산자를 추가한다.
     // array에 연산자가 있을 경우 연산을 실행하고, '-' 연산자를 추가한다.
     @IBAction func minus(_ sender: Any) {
-        if userInput {
-            if arr.isEmpty {
-                num = Int(mainDisplay.text!)!
-                arr.append("-")
-            } else {
-                let value = arr.last
-                calculate(operation: value!)
-                arr.append("-")
+        if mainDisplay.text! != "" {
+            if userInput {
+                if arr.isEmpty {
+                    num = Int(mainDisplay.text!)!
+                    arr.append("-")
+                } else {
+                    let value = arr.last
+                    calculate(operation: value!)
+                    arr.append("-")
+                }
+                userInput = false
             }
-            userInput = false
+        } else {
+            let alert = UIAlertController(title: "Stop", message: "숫자를 입력해 주세요.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Okay", style: .destructive))
+            present(alert, animated: true)
         }
+        Analytics.logEvent("minus", parameters: ["category": "click",
+                                                 "action": "minus"])
     }
     
     
@@ -116,17 +151,25 @@ class SecondViewController: UIViewController {
     // array에 연산자가 없을 경우 '×' 연산자를 추가한다.
     // array에 연산자가 있을 경우 연산을 실행하고, '×' 연산자를 추가한다.
     @IBAction func cross(_ sender: Any) {
-        if userInput {
-            if arr.isEmpty {
-                num = Int(mainDisplay.text!)!
-                arr.append("×")
-            } else {
-                let value = arr.last
-                calculate(operation: value!)
-                arr.append("×")
+        if mainDisplay.text! != "" {
+            if userInput {
+                if arr.isEmpty {
+                    num = Int(mainDisplay.text!)!
+                    arr.append("×")
+                } else {
+                    let value = arr.last
+                    calculate(operation: value!)
+                    arr.append("×")
+                }
+                userInput = false
             }
-            userInput = false
+        } else {
+            let alert = UIAlertController(title: "Stop", message: "숫자를 입력해 주세요.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Okay", style: .destructive))
+            present(alert, animated: true)
         }
+        Analytics.logEvent("cross", parameters: ["category": "click",
+                                                 "action": "cross"])
     }
     
     
@@ -134,16 +177,24 @@ class SecondViewController: UIViewController {
     // array에 연산자가 없을 경우 '÷' 연산자를 추가한다.
     // array에 연산자가 있을 경우 연산을 실행하고, '÷' 연산자를 추가한다.
     @IBAction func div(_ sender: Any) {
-        if userInput {
-            if arr.isEmpty {
-                num = Int(mainDisplay.text!)!
-                arr.append("÷")
-            } else {
-                let value = arr.last
-                calculate(operation: value!)
-                arr.append("÷")
+        if mainDisplay.text! != "" {
+            if userInput {
+                if arr.isEmpty {
+                    num = Int(mainDisplay.text!)!
+                    arr.append("÷")
+                } else {
+                    let value = arr.last
+                    calculate(operation: value!)
+                    arr.append("÷")
+                }
+                userInput = false
             }
-            userInput = false
+        } else {
+            let alert = UIAlertController(title: "Stop", message: "숫자를 입력해 주세요.", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Okay", style: .destructive))
+            present(alert, animated: true)
         }
+        Analytics.logEvent("div", parameters: ["category": "click",
+                                               "action": "div"])
     }
 }
