@@ -17,7 +17,7 @@ OnoPlusOne은 개인 토이 프로젝트로, 계산기 기능을 지원하는 �
 **1. Light Mode**
 
 <p align="center">
-  <img src="./lightMode.png" width=30% height=30%>
+  <img src="./lightMode.png" width=20% height=20%>
 </p>
 라이트 모드에서는 복잡한 계산을 수월하게 할 수 있도록 가시성과 사용 편의성을 우선시합니다. 사용자는 긴 수식을 입력하고, 앱은 즉시 결과를 계산하여 나타냅니다. 이 모드는 복잡한 수학적 표현도 간편하게 처리할 수 있습니다.
 
@@ -26,7 +26,7 @@ OnoPlusOne은 개인 토이 프로젝트로, 계산기 기능을 지원하는 �
 **2. Dark Mode**
 
 <p align="center">
-  <img src="./darkMode.png" width=30% height=30%>
+  <img src="./darkMode.png" width=20% height=20%>
 </p>
 다크 모드는 전체 식을 표시하지 않고도 빠른 계산이 가능하도록 설계되었습니다. 사용자가 값을 입력하면 앱이 즉시 결과를 계산하며, 빠른 계산을 위해 프로세스를 간소화했습니다. 또한, 다크 모드에는 천(1000)과 백(100) 값을 간편하게 입력할 수 있도록 '000'과 '00' 버튼이 추가되어 있습니다.
 
