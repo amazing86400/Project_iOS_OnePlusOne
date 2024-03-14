@@ -1,11 +1,12 @@
 # OnePlusOne
 
 > 나만의 계산기 앱
+
 > Toy Project
 
 <br>
 
-## 프로젝트 소개
+## 📌 프로젝트 소개
 
 <p align="center">
   <img src="./lightMode.png" width=30% height=30%>
@@ -16,7 +17,7 @@ OnoPlusOne은 개인 토이 프로젝트로, 계산기 기능을 지원하는 �
 
 <br>
 
-## 구현 기능
+## 💡 구현 기능
 
 1. <strong>Light Mode</strong>:
 
@@ -30,12 +31,12 @@ OnoPlusOne은 개인 토이 프로젝트로, 계산기 기능을 지원하는 �
 
 <br>
 
-## 기술 스택
+## 🛠️ 기술 스택
 
 - iOS, Swift, UIKit, StoryBoard
 
 <br>
 
-## 개발 기간
+## 🗓️ 개발 기간
 
 2023.04.05 ~ 2023.04.09 (4일)
