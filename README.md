@@ -1,8 +1,7 @@
 # OnePlusOne
 
-나만의 계산기 앱
-
-Toy Project
+> 나만의 계산기 앱
+> Toy Project
 
 <br>
 
