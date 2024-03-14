@@ -1,17 +1,11 @@
 # OnePlusOne
 
-> 나만의 계산기 앱
-
+> 나만의 계산기 앱<br>
 > Toy Project
 
 <br>
 
 ## 📌 프로젝트 소개
-
-<p align="center">
-  <img src="./lightMode.png" width=30% height=30%>
-  <img src="./darkMode.png" width=30% height=30%>
-</p>
 
 OnoPlusOne은 개인 토이 프로젝트로, 계산기 기능을 지원하는 앱입니다. 앱은 두 가지 버전인 라이트 모드와 다크 모드로 제공되며, 각각 다른 컨셉과 기능을 제공합니다. OnePlusOne을 사용하면 사용자는 라이트 모드와 다크 모드를 자유롭게 전환하여 선호에 맞게 사용할 수 있으며, 복잡한 수식을 해결하거나 신속한 계산을 수행하는 데 필요한 도구를 제공합니다.
 
@@ -40,3 +34,12 @@ OnoPlusOne은 개인 토이 프로젝트로, 계산기 기능을 지원하는 �
 ## 🗓️ 개발 기간
 
 2023.04.05 ~ 2023.04.09 (4일)
+
+<br>
+
+## 📱 미리보기
+
+<p align="center">
+  <img src="./lightMode.png" width=30% height=30%>
+  <img src="./darkMode.png" width=30% height=30%>
+</p>
